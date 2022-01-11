@@ -8,15 +8,47 @@
 </head>
 <body>
     <header id="root"></header>
-    <script>
+    <script type="text/babel">
 
     // function return name of my store in my header 
         function Header() {
-            return ( <h1> La maison jungle</h1>)
+            let title = 'La maison jungle';
+            return ( <h1> {title.toUpperCase()} </h1>)
         }
-
-    // raeact code 
-    ReactDOM.render( <Header />, document.getElementById('root'))
+    // function description return description 
+        function Description() {
+            let description = 'Ici achetez toutes les plantes dont vous avez toujours rêvé 🌵🌱🎍';
+             return (<p> {description} </p>)
+        }
+    // Banner code 
+        function Banner() {
+            return (<div>
+                    <Header />
+                    <Description />
+                </div>)
+         } 
+    // cart component 
+         function Cart(){
+             let cart_content = new Object();
+             cart_content.monstera_name='monstera';
+             cart_content.lierre_name='lierre';
+             cart_content.bouquet_de_fleurs_name='bouquet_de_fleurs';
+             cart_content.monstera_price=8;
+             cart_content.lierre_price=10;
+             cart_content.bouquet_de_fleurs_price=15;
+             
+             return (<div>
+                <p>Panier</p>
+                <ul>
+                    <li> {cart_content.monstera_name} : {cart_content.monstera_price} $ </li>
+                    <li> {cart_content.lierre_name}:{cart_content.lierre_price} $</li>
+                    <li> {cart_content.bouquet_de_fleurs_name} : {cart_content.bouquet_de_fleurs_price} $</li>
+                </ul>
+                <p> Total : {cart_content.monstera_price+cart_content.lierre_price+cart_content.bouquet_de_fleurs_price} $</p>
+                </div>)
+         }
+    // raeact code  
+    ReactDOM.render( <React.Fragment><Banner /><Cart /></React.Fragment>, document.getElementById('root'))
 
     </script>
 
